@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO'
+        crossorigin='anonymous'>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49'
+        crossorigin='anonymous'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy'
+        crossorigin='anonymous'></script>
+
+    <link rel='stylesheet' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css'>
+    <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+
+    <link rel='stylesheet' href='{{ url_for('static', filename='simple_wall.css') }}'>
+
+    <script>
+
+        $(document).ready(function () {
+
+        })
+
+    </script>
+
+</head>
+
+<body>
+
+    <div>
+        <h1>Login and Registration</h1>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h4>Register Now</h4>
+            <form action="/reg" method="post">
+                <div class="form-group">
+                    <label for="first_name">First Name:</label>
+                    <input class="form-control" type="text" name="first_name" placeholder="First Name" value="{{ session['first_name'] }}">
+                </div>
+                {% with messages = get_flashed_messages(category_filter=["first"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="red">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <div class="form-group">
+                    <label for="last_name">Last Name:</label>
+                    <input class="form-control" type="text" name="last_name" placeholder="Last Name" value="{{ session['last_name'] }}">
+                </div>
+                {% with messages = get_flashed_messages(category_filter=["last"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="red">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input class="form-control" type="text" name="email" placeholder="Email" value="{{ session['email'] }}">
+                </div>
+                {% with messages = get_flashed_messages(category_filter=["email"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="red">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input class="form-control" type="password" name="password" placeholder="password">
+                </div>
+                {% with messages = get_flashed_messages(category_filter=["password"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="red">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password:</label>
+                    <input class="form-control" type="password" name="confirm_password" placeholder="password">
+                </div>
+                {% with messages = get_flashed_messages(category_filter=["confirm"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="red">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+
+        <div class="col">
+            <h4>Log In</h4>
+            <form action="/login" method="post">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input class="form-control" type="text" name="email" placeholder="Email" value="{{ session['email2'] }}">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input class="form-control" type="password" name="password" placeholder="password">
+                </div>
+                {% with messages = get_flashed_messages(category_filter=["login"]) %}
+                {% if messages %}
+                    <ul class=flashes>
+                    {% for message in messages %}
+                        <li class="red">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                {% endwith %}
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Login">
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</body>
+
+</html>

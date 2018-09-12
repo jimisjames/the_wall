@@ -1,0 +1,45 @@
+body {
+    max-width: 1000px;
+    margin: auto;
+    padding: 0px 20px;
+}
+
+img {
+    width: 20px;;
+}
+
+.col {
+    padding: 40px;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.gray {
+    background-color: rgb(206, 206, 206);
+    border-radius: 2px;
+    padding: 5px;
+}
+
+.col-2 {
+    display: flex;
+    align-items: center;
+}
+
+.table {
+    margin-top: 15px;
+    border: 1px solid gray;
+}
+
+#danger {
+    text-align: center;
+}
+
+#message {
+    height: 60px;
+}
